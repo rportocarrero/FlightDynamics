@@ -1,1 +1,2 @@
-add_library(Matrix Matrix.cpp)
+add_executable(main main.cpp)
+add_library(matx Matrix.cpp)
