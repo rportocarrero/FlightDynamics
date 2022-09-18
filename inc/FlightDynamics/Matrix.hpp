@@ -11,7 +11,7 @@
 #ifndef H_MATRIX
 #define H_MATRIX
 
-#include<vector>
+#include <vector>
 using namespace std;
 
 /**
