@@ -220,3 +220,44 @@ Matrix flightpath_wrt_geo(float heading_angle, float flightpath_angle){
     result.data = tm;
     return result;
 }
+
+Matrix body_wrt_local_level(float yaw, float pitch, float roll){
+    Matrix result;
+    result.rows = 3;
+    result.cols = 3;
+    result.is_square = 1;
+    
+    vector<vector<float>> tm(result.rows, vector<float>(result.cols, 0));
+    tm[0][0] = cos(yaw) * cos(pitch);
+    tm[0][1] = sin(yaw) * cos(pitch);
+    tm[0][2] = -sin(pitch);
+    tm[1][0] = cos(yaw) * sin(pitch) * sin(roll) - sin(pitch) * cos(roll);
+    tm[1][1] = sin(yaw) * sin(pitch) * sin(roll) + cos(yaw) * cos(roll);
+    tm[1][2] = cos(pitch) * sin(roll);
+    tm[2][0] = cos(yaw) * sin(pitch) * cos(roll) + sin(yaw) * sin(roll);
+    tm[2][1] = sin(yaw) * sin(pitch) * cos(roll) - cos(yaw) * sin(roll);
+    tm[2][2] = cos(pitch) * cos(roll);
+
+    result.data = tm;
+    return result;
+}
+
+Matrix flightpath_wrt_locallevel(float flight_path_angle, float heading_angle){
+    Matrix result;
+    result.rows = 3;
+    result.cols = 3;
+    result.is_square = 1;
+    
+    vector<vector<float>> tm(result.rows, vector<float>(result.cols, 0));
+    tm[0][0] = cos(flight_path_angle);
+    tm[0][1] = cos(flight_path_angle) * sin(heading_angle);
+    tm[0][2] = -sin(flight_path_angle);
+    tm[1][0] = -sin(heading_angle);
+    tm[1][1] = cos(heading_angle);
+    tm[2][0] = sin(flight_path_angle) * cos(heading_angle);
+    tm[2][1] = sin(flight_path_angle) * sin(heading_angle);
+    tm[2][2] = cos(flight_path_angle);
+
+    result.data = tm;
+    return result;
+}
