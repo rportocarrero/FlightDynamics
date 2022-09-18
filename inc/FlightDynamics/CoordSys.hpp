@@ -14,4 +14,5 @@ Matrix body_wrt_aeroballistic(float aero_roll_angle);
 Matrix aeroballistic_wind_wrt_body(float total_aoa, float aero_roll_angle);
 Matrix flightpath_wrt_geo(float heading_angle, float flightpath_angle);
 Matrix body_wrt_local_level(float yaw, float pitch, float roll);
+Matrix flightpath_wrt_locallevel(float heading_angle, float flight_path_angle);
 #endif
