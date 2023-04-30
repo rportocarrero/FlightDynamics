@@ -109,4 +109,5 @@ vector<float> euler_diffeq(vector<float> body_rates, vector<float> euler_angles)
     float yaw_dot = q*sin(roll)*cos(pitch) + r*cos(roll)/cos(pitch);
 
     vector<float> result = {roll_dot, pitch_dot, yaw_dot};
+    return result;
 }

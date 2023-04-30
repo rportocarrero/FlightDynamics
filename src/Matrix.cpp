@@ -160,6 +160,7 @@ Matrix matrix_product(Matrix a, Matrix b){
     result.data = values;
     return result;
 }
+
 float scalar_product(vector<float> a, vector<float> b){
     if(a.size() != b.size()){
         throw "invalid dimensions";
@@ -172,4 +173,19 @@ float scalar_product(vector<float> a, vector<float> b){
     return sum;
 }
 
-Matrix unit_vector_product(Matrix a, Matrix b);
+vector<float> Matrix_vector_product(Matrix a, vector<float> b){
+    if(a.cols != b.size()){
+        throw "Invalid Dimensions";
+    }
+
+    vector<float> result = b;
+
+    for(int i=0;i<a.rows;i++){
+        float sum=0;
+        for(int j=0;j<a.cols;j++){
+            sum += a.data[i][j]*b[j];
+        }
+        result[i] = sum;
+    }
+    return result;
+}

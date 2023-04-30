@@ -172,3 +172,26 @@ TEST(MatrixTest, scalarProductInvalidDim){
     vector<float> B = {5,5,0};
     EXPECT_ANY_THROW(scalar_product(A,B));
 }
+
+TEST(MatrixTest, vectorProductInvalidDim){
+    Matrix A;
+    A.rows = 3;
+    A.cols = 3;
+    A.data = {{1,0,0},{0,1,0},{0,0,1}};
+    vector<float> B = {1,2};
+    vector<float> expected = {1,2,3};
+
+    EXPECT_ANY_THROW(Matrix_vector_product(A, B));
+}
+
+TEST(MatrixTest, vectorProduct){
+    Matrix A;
+    A.rows = 3;
+    A.cols = 3;
+    A.data = {{1,2,3},{3,1,2},{2,3,1}};
+    vector<float> B = {1,2,3};
+    vector<float> expected = {14,11,11};
+
+    vector<float> result = Matrix_vector_product(A, B);
+    ASSERT_EQ(result, expected);
+}

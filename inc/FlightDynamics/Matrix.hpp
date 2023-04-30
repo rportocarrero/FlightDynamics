@@ -38,6 +38,6 @@ Matrix matrix_transpose(Matrix a);
 Matrix matrix_product(Matrix a, Matrix b);
 float scalar_product(vector<float> a, vector<float> b);
 Matrix unit_vector_product(Matrix a, Matrix b);
-
+vector<float> Matrix_vector_product(Matrix a, vector<float> b);
 
 #endif
